@@ -29,7 +29,7 @@ const server = app.listen(process.env.PORT, ()=>{
 
 const io = socket(server,{
     cors:{
-        origin: "https://auth-shubh.onrender.com",
+        origin: "http://localhost:10000",
         credential: true,
     },
 });
