@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoutes");
 const socket = require("socket.io");
+const http = require("http");
 
 const app = express();
 require("dotenv").config();
@@ -27,9 +28,14 @@ const server = app.listen(process.env.PORT, ()=>{
     console.log(`Server Started on port ${process.env.PORT}`);
 });
 
+const PORT = process.env.PORT || 5000;
+const server = http.createServer(app);
+server.listen(PORT,()=> console.log(`server has started on port:${PORT}`));
+app.use(router);
+
 const io = socket(server,{
     cors:{
-        origin: "http://localhost:3000",
+        origin: "/",
         credential: true,
         methods: ["POST"],
     allowedHeaders: ["my-custom-header"],
