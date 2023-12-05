@@ -31,6 +31,8 @@ const io = socket(server,{
     cors:{
         origin: "http://localhost:3000",
         credential: true,
+        methods: ["POST"],
+    allowedHeaders: ["my-custom-header"],
     },
 });
 
