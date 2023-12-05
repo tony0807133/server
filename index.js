@@ -24,12 +24,12 @@ mongoose.connect(process.env.MONGO_URL,{
 });
 
 const server = app.listen(process.env.PORT, ()=>{
-    console.log(`Server Started on port ${process.env.PORT}` || 10000);
+    console.log(`Server Started on port ${process.env.PORT}`);
 });
 
 const io = socket(server,{
     cors:{
-        origin: "http://localhost:10000",
+        origin: "https://auth-shubh.onrender.com",
         credential: true,
     },
 });
