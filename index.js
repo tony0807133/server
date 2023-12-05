@@ -27,14 +27,17 @@ const server = app.listen(process.env.PORT, ()=>{
     console.log(`Server Started on port ${process.env.PORT}`);
 });
 
-const io = socket(server,{
-    cors:{
-        origin: "http://localhost:10000",
-        credential: true,
-        methods: ["POST"],
-        
+const io = socket(server, {
+    cors: {
+        origin: "https://chatli.netlify.app",
+        methods: ["GET", "POST"],
+        credentials: true,
+        allowedHeaders: ["my-custom-header"],
     },
 });
+
+
+
 
 global.onlineUsers = new Map();
 
